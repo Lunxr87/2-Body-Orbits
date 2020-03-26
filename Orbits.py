@@ -96,7 +96,7 @@ else:
 
 ### Variables ###
 # user inputs
-print("\nWhen the simmulation is done, click on one of the stars to close out.\nOr click the screen at anytime you wish to stop.")
+print("\nWhen the simmulation is done, click on one of the stars to close out.")
 a = float(input(f"What is the semi-major axis of your {answer:s} in AU?\nFor reference, 1 AU is the distance between the Sun and Earth.\nSaturn is ~10 AU. * "))
 ecc = float(input("What is the eccentricity of your orbit (a value between 0.0-1.0)? * "))
 print("\nYou might want to use numbers > 0.0 and < 10.0 but any number works.")
