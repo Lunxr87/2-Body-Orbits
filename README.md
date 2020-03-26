@@ -1,1 +1,1 @@
-# 2-Body-Orbits
+# You may need to adjust the window size depending on your computer's resolution. 
