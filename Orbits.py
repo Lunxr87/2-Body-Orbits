@@ -384,4 +384,4 @@ while True:
 ###
 # 
             
-#### observe this planetary system ####
+#### observe this system ####
