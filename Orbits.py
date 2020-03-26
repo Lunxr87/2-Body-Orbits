@@ -9,12 +9,6 @@ Created on Thu Mar 12 22:53:19 2020
 #
 ###
 #
-
-# add dust/ planetary disk
-# add galaxies
-# add comets
-# add supernovae
-
 #
 ###
 #
@@ -23,7 +17,7 @@ Created on Thu Mar 12 22:53:19 2020
 import math as mt # need math functions
 from math import pi # need pi value
 import turtle # use to draw
-from random import seed # not actually sure what this is used for
+from random import seed # initialized random number
 from random import randint # random integer values
 
 #
