@@ -17,7 +17,7 @@ Created on Thu Mar 12 22:53:19 2020
 import math as mt # need math functions
 from math import pi # need pi value
 import turtle # use to draw
-from random import seed # initialized random number
+from random import seed # not actually sure what this is used for
 from random import randint # random integer values
 
 #
@@ -41,8 +41,11 @@ answer = choice(question) # use above function to change words in the user input
 # want to take star or planet and change input statements
 if answer == "planet":
     unit = "Jupiter"
+    phrase = " "
 else:
     unit = "Solar"
+    phrase = " companion "
+orbits = int(input("How many orbits would you like to see (1,2,3,...)? * ")) # run code for this long
 ## Works ##
 
 #
@@ -71,14 +74,14 @@ if respuesta == True: # will ask again since this is not ideal
     else:
         if answer == "planet": # want to fit system in the window to demonstrate whats going on
             d = 10
-            n = 2
+            n = 3
         if answer == "star": # the distances will inherently be large so scale down a lot
             d = 20
             n = 0.5
 else:
     if answer == "planet": # want to fit system in the window to demonstrate whats going on
         d = 10
-        n = 2
+        n = 3
     if answer == "star": # the distances will inherently be large so scale down a lot
         d = 20
         n = 0.5
@@ -93,7 +96,7 @@ else:
 
 ### Variables ###
 # user inputs
-print("\nWhen the simmulation is done, click on one of the stars to close out.")
+print("\nWhen the simmulation is done, click on one of the stars to close out.\nOr click the screen at anytime you wish to stop.")
 a = float(input(f"What is the semi-major axis of your {answer:s} in AU?\nFor reference, 1 AU is the distance between the Sun and Earth.\nSaturn is ~10 AU. * "))
 ecc = float(input("What is the eccentricity of your orbit (a value between 0.0-1.0)? * "))
 print("\nYou might want to use numbers > 0.0 and < 10.0 but any number works.")
@@ -101,8 +104,8 @@ if answer == "star":
     print("Your primary (first) star should have a larger mass than your companion (second) star.")
 star_r = float(input("In Solar Radii, how large is your primary star? * "))
 star_m = float(input("In Solar Masses, how massive is your primary star? * "))
-object_r = float(input(f"In {unit:s} Radii, how large is your {answer:s}? * "))
-object_m = float(input(f"In {unit:s} Masses, how massive is your {answer:s}? * "))
+object_r = float(input(f"In {unit:s} Radii, how large is your{phrase:s}{answer:s}? * "))
+object_m = float(input(f"In {unit:s} Masses, how massive is your{phrase:s}{answer:s}? * "))
 # initialized variables
 phi = 0
 i = 0
@@ -329,8 +332,8 @@ prop.write(f"1 year on blue {answer:s} = {p:,.1f} Earth years", align="left")
 ### Circular Motion ###
 # Main loop that makes the star and planet move relative to CoM
 while True:
-    while phi <= 4*pi: # want multiple orbits
-        if i <= 401: # want small increments for more accurate simulation 
+    while phi <= orbits*2*pi: # want multiple orbits
+        if i <= (200*orbits + 1): # want small increments for more accurate simulation 
             phi = (i*pi) / 100 # small theta values for same increment reason
             
             # planet time #
@@ -368,8 +371,8 @@ while True:
             
             years += 0.005
             i += 1
-            if i == 401: # time to stop
-                phi = 100
+            if i == (200*orbits + 1): # time to stop
+                phi = 10000
                 turtle.exitonclick() # when the window is clicked the program ends
             wn.update() # want to update window to prevent duplicates
 ## Works ##
