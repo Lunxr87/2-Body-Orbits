@@ -4,19 +4,11 @@ Created on Thu Mar 12 22:53:19 2020
 
 @author: Lunxr
 """
-##### This code produces a simulation of a 2-body problem #####
+##### This code produces a simulation of a 2-body problem that the user gets to make #####
 
 #
 ###
 #
-
-# add comets
-# add stellar type (color)
-# add light and dark side for planet
-# add roche limit check and orbit spiral
-# add plots of position vs time
-# forces -> a = -GM/r^2 
-
 #
 ###
 #
@@ -108,38 +100,9 @@ x = y = 0
 years = 0
 
 
-"""
-# needs fixing and finetunning 
-## variable scale factors ##
-# looking at scales with 'a' more likely for stars
-if a > 100 and a <= 500:
-    d == 300
-elif a > 500 and a <= 1000:
-    d == 250
-elif a > 1000 and a <= 1500:
-    d == 200 
-elif a > 1500 and a <= 2000:
-    d == 150
-elif a > 2000:
-    d == 100 
-# looking at scales with 'a' more likely for planets
-elif a > 40 and a <=100:
-    d == d
-elif a > 10 and a <= 40:
-    d == 300
-elif a <= 10:
-    d == 250     
-"""
-
 
 ### Conversions ###
-"""
-# gravitational constant
-G = 6.674*10**(-11) # m^3 kg^-1 s^-2
-m_to_au = (1.496*10**11)**3 # conversion for m^3 to au^3
-kg_to_sm = 1.989*10**30 # conversion for kg to solar mass
-new_G = G*kg_to_sm / m_to_au # G in au, solar mass, and seconds
-"""
+
 # convert AU to solar radii for a
 new_a = (a / 0.00465) # 1 solar radii = 0.00465 AU
 
@@ -240,18 +203,7 @@ path_o.hideturtle()
 path_o.penup()
 path_o.color("grey")
 path_o.pensize(0.2) # want small trail
-"""
-## Origin as CoM ##
-org = turtle.Turtle()
-org.hideturtle()
-org.color("red")
-org.pensize(10)
-org.speed(0)
-org.penup()
-org.setpos(0,0) # CoM is at the origin
-org.write('Center of Mass', align='center')
-org.penup()
-"""
+
 ## Creates Legend scale for the unrealistic scale ##
 scale_dist = in_r_o
 if respuesta == False:
@@ -339,12 +291,6 @@ while True:
             
             # object time #
             r_o = ((new_a*(1 - ecc**2)) / (1 + (ecc*mt.cos(phi)))) / scale # radial equation from object to CoM
-            """
-            F = - new_G*star_m*new_object_m / (r_o**2)
-            a_o = F / new_object_m
-            ax_o = a_o*mt.cos(phi)
-            ay_o = a_o*mt.sin(phi)
-            """
             x_o = r_o*mt.cos(phi) + ((new_a*ecc) / scale) 
             y_o = r_o*mt.sin(phi)
             obj.goto(x_o,y_o) # send object to updated position
@@ -371,7 +317,7 @@ while True:
             r_diff = ((r_s*scale) - (r_o*scale) + (new_object_r / n) + (new_star_r / n))*0.00465 # turns to AU
             mag_r_diff = abs(r_diff) # just magnitude
             
-            
+       
             v_o = (2*pi*r_o*695700*scale) / period # 1 solar radii = 695700 km. account for scaling
             # want to print current position velocity and number of orbits
             pen_pos.clear()
